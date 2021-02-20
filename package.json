@@ -1,0 +1,24 @@
+{
+  "name": "eslint-plugin-change-detection-strategy",
+  "description": "eslint plugin to check Angular ChangeDetectionStrategy",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/num13ru/eslint-plugin-change-detection-strategy.git"
+  },
+  "keywords": [
+    "angular",
+    "change detection",
+    "onpush"
+  ],
+  "author": "Eduard Gorte",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/num13ru/eslint-plugin-change-detection-strategy/issues"
+  },
+  "homepage": "https://github.com/num13ru/eslint-plugin-change-detection-strategy#readme"
+}
