@@ -2,11 +2,51 @@
 
 This eslint plugin checks [Angular ChangeDetectionStrategy](https://angular.io/api/core/ChangeDetectionStrategy) is `OnPush`
 
+Example of incorrect code:
+
 ```typescript
 @Component({
-    selector: 'app-main',
-    templateUrl: './main.component.html',
-    styleUrls: ['./main.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
+    changeDetection: ChangeDetectionStrategy.Default // <-- error  Component should have ChangeDetectionStrategy.OnPush  change-detection-strategy/on-push
+}) { }
+
+@Component({
+    ... // <-- error  Component should have ChangeDetectionStrategy.OnPush  change-detection-strategy/on-push
+}) { }
 ```
+
+
+Example of correct code:
+
+```typescript
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush
+}) { }
+```
+
+
+## Installation
+
+`npm install --save-dev eslint-plugin-change-detection-strategy`
+
+or
+
+`yarn add -D eslint-plugin-change-detection-strategy`
+
+## Usage
+
+1. Add to .eslintrc plugins:
+    ```
+    "plugins": [ "change-detection-strategy" ],
+    ```
+1. Add to .eslintrc rules:
+    ```
+    "rules": { "change-detection-strategy/on-push": "error" }
+    ```
+1. Run `lint --fix` to fix the issues automatically.
+1. Ignore the rule at some component if you like:
+    ```
+    // eslint-disable-next-line change-detection-strategy/on-push
+    @Component({
+        changeDetection: ChangeDetectionStrategy.OnPush // <-- ok
+    }) { }
+    ```
