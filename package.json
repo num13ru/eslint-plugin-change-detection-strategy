@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-change-detection-strategy",
   "description": "eslint plugin to check Angular ChangeDetectionStrategy",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
