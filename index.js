@@ -15,6 +15,10 @@ const CHANGE_DETECTION_KEY = 'changeDetection';
 const CHANGE_DETECTION_STRATEGY = 'ChangeDetectionStrategy';
 const ON_PUSH = 'OnPush';
 const CHANGE_DETECTION_STRATEGY_ON_PUSH = CHANGE_DETECTION_STRATEGY + '.' + ON_PUSH;
+const SELECTOR_KEY = 'selector';
+const SINGLE_SPACE = ' ';
+const FALLBACK_INDENT = 2;
+const NEWLINE = '\n';
 
 const rules = {
     "on-push": {
@@ -50,13 +54,14 @@ const rules = {
                                         const targetTokenIndex = tokens.findIndex(x => x.value === CHANGE_DETECTION_STRATEGY) + 2;
                                         return fixer.replaceText(tokens[targetTokenIndex], ON_PUSH);
                                     } else {
+                                        const selectorToken = tokens.find((t) => t.value === SELECTOR_KEY);
+                                        const indent = selectorToken ? selectorToken.loc.start.column : FALLBACK_INDENT;
                                         // We don't need two punctuator tokens `})`
                                         const lastPropertyPunctuatorToken = tokens[tokens.length - 2];
                                         // Check for the presence of a comma character to avoid unnecessary insertion
                                         const hasComma = lastPropertyPunctuatorToken.value === COMMA;
-                                        // Insert code block as multiline string
-                                        return fixer.insertTextAfter(lastPropertyPunctuatorToken, `${hasComma ? EMPTY : COMMA}
-                                        ${CHANGE_DETECTION_KEY}: ${CHANGE_DETECTION_STRATEGY_ON_PUSH}`);
+                                        // Insert code block as multiline string with indent
+                                        return fixer.insertTextAfter(lastPropertyPunctuatorToken, `${hasComma ? EMPTY : COMMA}${NEWLINE}${SINGLE_SPACE.repeat(indent)}${CHANGE_DETECTION_KEY}: ${CHANGE_DETECTION_STRATEGY_ON_PUSH}`);
                                     }
                                 }
                             });
