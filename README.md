@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This project is no longer maintained. Please use [@angular-eslint/prefer-on-push-component-change-detection](https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md) instead.
+
 # eslint-plugin-change-detection-strategy
 
 This eslint plugin checks [Angular ChangeDetectionStrategy](https://angular.io/api/core/ChangeDetectionStrategy) is `OnPush`
